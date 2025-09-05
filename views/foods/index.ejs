@@ -15,6 +15,7 @@
           <% pantry.forEach((item) => { %>
             <li>
               <%= item.name %>
+              <a href="/users/<%= user._id %>/foods/<%= item._id %>/edit">Edit Item</a>
               <form action="/users/<%= user._id %>/foods/<%= item._id %>?_method=DELETE" method="POST">
                 <button type="submit">Delete Item</button>
               </form>
