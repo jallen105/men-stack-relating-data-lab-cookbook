@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
     try {
 
         const currentUser = await User.findById(req.session.user._id)
-        
+
         res.render('foods/index.ejs', {
             pantry: currentUser.pantry
         })
@@ -35,7 +35,7 @@ router.get('/:itemId/edit', async (req, res) => {
         const currentUser = await User.findById(req.session.user._id)
         const currentItem = currentUser.pantry.id(req.params.itemId)
 
-        res.render('/foods/edit.ejs', {
+        res.render('foods/edit.ejs', {
             item: currentItem
         })
 
@@ -72,7 +72,7 @@ router.put('/:itemId', async (req, res) => {
 
     try{
 
-        const currentUser = User.findById(req.session.user._id)
+        const currentUser = await User.findById(req.session.user._id)
         const currentItem = currentUser.pantry.id(req.params.itemId)
     
         currentItem.set(req.body)
