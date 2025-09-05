@@ -9,10 +9,20 @@
     <h1>Welcome to my Pantry</h1>
     <a href="/users/<%= user._id %>/foods/new">Add New Item</a>
     <h3>Your Pantry:</h3>
-    <ul>
-      <% pantry.forEach((item) => { %>
-        <li><%= item %></li>
-      <% }) %>
-    </ul>
+    <% if (pantry.length > 0) { %>
+        <ul>
+          <% pantry.forEach((item) => { %>
+            <li>
+              <%= item %>
+              <form action="/users/<%= user._id %>/foods/<%= item._id %>?_method=DELETE" method="POST">
+                <button type="submit">Delete Item</button>
+              </form>
+            </li>          
+          <% }) %>
+        </ul>
+    <% } else { %>
+      <p>There are no items in this pantry.</p>
+    <% } %>
+
   </body>
 </html>
