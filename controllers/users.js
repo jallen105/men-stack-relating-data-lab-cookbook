@@ -10,4 +10,11 @@ router.get('/', async (req, res) => {
     })
 })
 
+router.get('/:userId', async (req, res) => {
+    const currentUser = await User.findById(req.params.userId)
+    res.render('users/show.ejs', {
+        user: currentUser
+    })
+})
+
 module.exports = router

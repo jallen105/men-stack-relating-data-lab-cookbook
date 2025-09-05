@@ -40,7 +40,6 @@ app.get('/', (req, res) => {
 });
 
 app.use(passUserToView)
-
 app.use('/auth', authController);
 app.use('/users', usersController)
 app.use(isSignedIn)
