@@ -6,6 +6,7 @@
     <title>My Pantry</title>
   </head>
   <body>
+    <%- include('../partials/_navbar.ejs') %>
     <h1>Welcome to my Pantry</h1>
     <a href="/users/<%= user._id %>/foods/new">Add New Item</a>
     <h3>Your Pantry:</h3>
@@ -13,7 +14,7 @@
         <ul>
           <% pantry.forEach((item) => { %>
             <li>
-              <%= item %>
+              <%= item.name %>
               <form action="/users/<%= user._id %>/foods/<%= item._id %>?_method=DELETE" method="POST">
                 <button type="submit">Delete Item</button>
               </form>
